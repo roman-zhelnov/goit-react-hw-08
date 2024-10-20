@@ -1,4 +1,29 @@
+import { Formik, Field, Form } from "formik";
+import { useDispatch } from "react-redux";
+import { login } from "../redux/auth/operations";
+import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
+
 const Login = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const initialValues = {
+    email: "",
+    password: "",
+  };
+
+  const handleSubmit = (values, options) => {
+    dispatch(login(values))
+      .unwrap()
+      .then((res) => {
+        toast.success(`Welcome ${res.user.name}!`);
+        navigate("/");
+      })
+      .catch(() => {
+        toast.error(`Invalid credentials!`);
+      });
+    options.resetForm();
+  };
   return (
     <div>
       <div className="hero bg-base-200 min-h-screen">
@@ -12,33 +37,39 @@ const Login = () => {
             </p>
           </div>
           <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-            <form className="card-body">
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Email</span>
-                </label>
-                <input
-                  type="email"
-                  placeholder="email"
-                  className="input input-bordered"
-                  required
-                />
-              </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Password</span>
-                </label>
-                <input
-                  type="password"
-                  placeholder="password"
-                  className="input input-bordered"
-                  required
-                />
-              </div>
-              <div className="form-control mt-6">
-                <button className="btn btn-primary">Login</button>
-              </div>
-            </form>
+            <Formik onSubmit={handleSubmit} initialValues={initialValues}>
+              <Form className="card-body">
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text">Email</span>
+                  </label>
+                  <Field
+                    name="email"
+                    type="email"
+                    placeholder="email"
+                    className="input input-bordered"
+                    required
+                  />
+                </div>
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text">Password</span>
+                  </label>
+                  <Field
+                    name="password"
+                    type="password"
+                    placeholder="password"
+                    className="input input-bordered"
+                    required
+                  />
+                </div>
+                <div className="form-control mt-6">
+                  <button className="btn btn-primary" type="submit">
+                    Login
+                  </button>
+                </div>
+              </Form>
+            </Formik>
           </div>
         </div>
       </div>
