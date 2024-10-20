@@ -1,10 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
-import { fetchContacts } from "../../redux/contactsOps";
+import { fetchContacts } from "../../redux/contacts/operations";
 import ContactForm from "../ContactForm/ContactForm";
 import ContactList from "../ContactList/ContactList";
 import SearchBox from "../SearchBox/SearchBox";
 import { useEffect } from "react";
-import { selectError, selectLoading } from "../../redux/contactsSlice";
+import { selectError, selectLoading } from "../../redux/contacts/selectors";
 
 const ContactsBook = () => {
   const isLoading = useSelector(selectLoading);
