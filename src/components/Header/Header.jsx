@@ -21,9 +21,11 @@ const Header = () => {
       </div>
       {isLoggedIn && <div>Welcome, {user.name}</div>}
       <div className="flex gap-5">
-        <NavLink className={buildLinkClass} to="/contacts">
-          Contacts
-        </NavLink>
+        {isLoggedIn && (
+          <NavLink className={buildLinkClass} to="/contacts">
+            Contacts
+          </NavLink>
+        )}
         {!isLoggedIn && (
           <>
             <NavLink className={buildLinkClass} to="/register">

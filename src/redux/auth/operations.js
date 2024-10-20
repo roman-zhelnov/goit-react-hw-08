@@ -42,3 +42,18 @@ export const logout = createAsyncThunk("logout", async (_, thunkApi) => {
     return thunkApi.rejectWithValue(error.massage);
   }
 });
+
+export const refreshUser = createAsyncThunk("refresh", async (_, thunkApi) => {
+  try {
+    const saveToken = thunkApi.getState().auth.token;
+
+    if (!saveToken) {
+      return thunkApi.rejectWithValue(`Not found token`);
+    }
+    setAuthHeader(saveToken);
+    const { data } = await goitApi.get("users/current");
+    return data;
+  } catch (error) {
+    return thunkApi.rejectWithValue(error.massage);
+  }
+});
