@@ -1,4 +1,3 @@
-import s from "./Contact.module.css";
 import { GiSmartphone } from "react-icons/gi";
 import { SlUser } from "react-icons/sl";
 import { useDispatch } from "react-redux";
@@ -7,7 +6,7 @@ import { deleteContact } from "../../redux/contactsOps";
 const Contact = ({ id, name, number }) => {
   const dispatch = useDispatch();
   return (
-    <li className="min-w-80 flex p-5 gap-5 justify-between border border-black rounded-lg">
+    <li className="min-w-80 flex p-5 gap-5 justify-between border-2 border-black rounded-lg">
       <div className="flex flex-col">
         <p className="flex flex-row gap-1 text-xl">
           <SlUser />

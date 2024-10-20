@@ -46,7 +46,7 @@ const ContactForm = () => {
             <span>Name</span>
             <Field
               name="name"
-              className="input input-bordered w-full max-w-xs"
+              className="input input-bordered border-2 border-black w-full max-w-xs"
             />
             <ErrorMessage name="name" component="span" className={s.error} />
           </label>
@@ -54,7 +54,7 @@ const ContactForm = () => {
             <span>Number</span>
             <Field
               name="number"
-              className="input input-bordered w-full max-w-xs"
+              className="input input-bordered border-2 border-black w-full max-w-xs"
             />
             <ErrorMessage name="number" component="span" className={s.error} />
           </label>
