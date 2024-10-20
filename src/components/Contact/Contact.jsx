@@ -7,18 +7,22 @@ import { deleteContact } from "../../redux/contactsOps";
 const Contact = ({ id, name, number }) => {
   const dispatch = useDispatch();
   return (
-    <li className={s.contact}>
-      <div className={s.user}>
-        <p>
-          <SlUser className={s.icon} />
+    <li className="min-w-80 flex p-5 gap-5 justify-between border border-black rounded-lg">
+      <div className="flex flex-col">
+        <p className="flex flex-row gap-1 text-xl">
+          <SlUser />
           {name}
         </p>
-        <p>
-          <GiSmartphone className={s.icon} />
-          {number}
+        <p className="flex flex-row gap-1 text-xl">
+          <GiSmartphone /> {number}
         </p>
       </div>
-      <button onClick={() => dispatch(deleteContact(id))}>Delete</button>
+      <button
+        className="btn btn-outline"
+        onClick={() => dispatch(deleteContact(id))}
+      >
+        Delete
+      </button>
     </li>
   );
 };

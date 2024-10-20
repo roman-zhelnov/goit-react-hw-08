@@ -14,7 +14,7 @@ const Header = () => {
         </NavLink>
       </div>
       <div>Welcome, who?</div>
-      <div>
+      <div className="flex gap-5">
         <NavLink className={buildLinkClass} to="/contacts">
           Contacts
         </NavLink>

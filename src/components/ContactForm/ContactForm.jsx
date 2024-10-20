@@ -44,15 +44,21 @@ const ContactForm = () => {
         <Form className={s.form}>
           <label className={s.label}>
             <span>Name</span>
-            <Field name="name" className={s.input} />
+            <Field
+              name="name"
+              className="input input-bordered w-full max-w-xs"
+            />
             <ErrorMessage name="name" component="span" className={s.error} />
           </label>
           <label className={s.label}>
             <span>Number</span>
-            <Field name="number" className={s.input} />
+            <Field
+              name="number"
+              className="input input-bordered w-full max-w-xs"
+            />
             <ErrorMessage name="number" component="span" className={s.error} />
           </label>
-          <button type="submit" className={s.btn}>
+          <button type="submit" className="btn btn-outline">
             Add contact
           </button>
         </Form>

@@ -15,8 +15,8 @@ const ContactsBook = () => {
     dispatch(fetchContacts());
   }, [dispatch]);
   return (
-    <div>
-      <h1>PhoneBook</h1>
+    <div className="p-10">
+      <h1 className="text-5xl font-bold">Contacts Book</h1>
       <ContactForm />
       <SearchBox />
       {isLoading && <h2>Loading... </h2>}
